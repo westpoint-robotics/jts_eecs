@@ -1,0 +1,75 @@
+Pre-Tutorial
+=================
+-Since JTS moved to github the zip file needs to be downloaded(I advise this for simplicity), or you can clone the repository.
+-the zip file from github is the source distribution. (4.1.8)
+-The guide PDF is in the jaustoolset-master\jaustoolset-master\GUI\doc directory
+-I have also amended the guide with inline comments which can be found in the outer jaustoolset-master directory
+
+Tutorial
+=================
+Environment Setup
+-------------------
+-The tools underneath section 4.1.3 need to be installed and do not automatically install like the tools in section 3.2
+-JDK(choose the most up to date one)
+	--intstall a JDK if your computer does not have one, set JAVA_HOME environment variable to the jdk's directory. 
+-apache ant 
+	--Need to add two environment variables, ANT_HOME set to the directory of apache ant. Add %ANT_HOME%/bin to the end of your PATH environment variable. 
+	--install using "build install", can check for install by running ant in a directory without a build.xml file and if installed should throw an error about the presence of a build.xml file.
+-scons-2.5.0
+	--the windows installer for scons failed after failing to find the python installation,so I used the scons-2.5.0 zip
+	--downloaded the scons-2.5.0.zip file and ran setup.py install to install it
+	--C:\Python27\ and C:\Python27\Scripts\ should be in your Path variable already, if they are not, add them or scons will not install. 
+-Make sure Python 2.7 is installed on your computer.
+-FOR WINDOWS-Microsoft visual studio c++ compiler(currently the 2010 and 2012 versions work, 2015 I have not gotten to work)
+
+-Section 4.1.8 should precede 4.1.6, do not begin enacting 4.1.6 until reading to 4.1.8.
+
+-if you type ant and the error that appears is build.xml file doesnt exist, then apache ant is installed and you just need to traverse to the directory in the jaus toolset folder that has build.xml in it to run ant commands. 
+-run ant schema-export to set up a clean copy of the db and then ant run to create the window, schema-export clears the JTS database of EVERYTHING, from components all the way down to the simple fields. 
+-the same database is used so if you close out of JTS after running ant run, DO NOT run ant schema-export unless you want to clear out all of your previous work.
+-one of the most common point of failures
+
+Troubleshooting Examples
+--------------------
+-make sure that the system environment variable JTS_COMMON_PATH is set to C:\......\GUI\templates\Common in your jaustoolset-master directory.
+-note that in most cases, the C++ compiler does not automatically install with Visual Studio, the lab computers should work though. 
+-for section 7.3 spent hours troubleshooting issues with scons installation, had issues if it wasn't run from a visual studio command line to process certain commands, now stuck on a c1083 fatal error: cannot open source file. 
+-the c1083 error came from a bad visual studio, 2010 on the lab computer works.
+-if properly installed should be able to build files with scons without being in the visual studio command line. 
+-if you try running scons and you get a 'cl' command cannot be found that means that you probably haven't installed the C++ compiler for visual studio. 
+-note that it doesn't matter where the c++ code is generated but I generated it in the jaustoolset-master directory one level above GUI.
+-in section 8.2 paragraph 8, it says 4202h for an id but means 4202, h is just to identify the number as hexadecimal.
+-in section 8.3 paragraph 4. enter the text in the text editor window as written in the tutorial minus the quotations.
+---in paragraph 6 just enter Ready into the text editor to name it, the name = format from before will not work.
+---in paragraph 7 the automatic transition refers to the simple transition leading from the pseudo start state leading to Ready.
+---refer to section 12.2 for a more in depth explanation of Behavior Elements
+-note that the protocol behavior GUI is buggy
+-also you will not be able to save a protocol behavior unless the FSM passes the validators tests and is saved as a .mxe file. 
+
+
+Other Examples
+==================================
+Environmental Sensing
+-------------------------
+-in jaustoolset-master\examples\StillImageServer_200 run scons to build
+-in jaustoolset-master\examples\Java\StillImageClientComponent_220 run scons to build an executable jar in its bin folder.
+---if you get an error saying javac can't be found then prepend your JAVA_HOME path to the bin to the Path variable ex: "JAVA_HOME path\bin; rest of the Path variables."
+-then run nodeManager, the server, and client to finish the example.
+
+Waypoint Driver
+-------------------------
+-ExampleOCU is is built from Java so the same precautions taken in the previous example apply.
+-Build WayPoint Driver and ExampleOCU and run both after running the nodeManager. 
+-
+-
+
+Primitive Driver
+======================================
+-Since Primitive Driver inherits from services defined within the Core Service set, you must import the xml definitions of these services from 
+jaustoolset-master\jaustoolset-master\GUI\resources\xml\urn.jaus.jss.core-v1.0
+-the PrimitiveDriver xml can be found in urn.jaus.jss.mobility
+
+-PrimitiveDriver inherits from Management
+-Management inherits from AccessControl
+-AccessControl inherits from Events
+-Events inherits from Transport
