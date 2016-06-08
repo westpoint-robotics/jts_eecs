@@ -1,0 +1,6 @@
+VariantDir('Build', '.', duplicate=0)
+sources = ['Build/Messages/QueryWrenchEffort.cpp', 'Build/Messages/ReportWrenchEffort.cpp', 'Build/Messages/SetWrenchEffort.cpp', 'Build/PrimServerService.cpp', 'Build/PrimServer_primServer.cpp', 'Build/PrimServer_primServer_sm.cpp']
+Import('env')
+lib = env.SharedLibrary('./lib/PrimServerService', sources, LIBS=['Common'])
+env.Install( env['INSTALL_LIB'], lib )
+env.Install( env['BINPATH'], lib )
