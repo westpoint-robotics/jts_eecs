@@ -70,7 +70,7 @@ Waypoint Driver
 -Build WayPoint Driver and ExampleOCU and run both after running the nodeManager. 
 -Currently have a question in to Aaron Miycus at TARDEC about the resulting behavior/lack thereof.
 -
--
+
 
 Primitive Driver
 ======================================
@@ -85,7 +85,7 @@ jaustoolset-master\jaustoolset-master\GUI\resources\xml\urn.jaus.jss.core-v1.0
 -I also included the Discovery service, because it was used in the WaypointDriver example.
 Analyzing the services that make up waypoint driver and primitive Driver
 --------------------------------------------------------------------------
--I looked through the auto generated code from my first attempt at PrimitiveDriver and compared that code to the auto generated and user amended code of the
+-I looked through the auto generated code from my first attempt at PrimitiveDriver and compared that code to the auto generated and user modified code of the
 waypoint driver example from the tutorial where the services are the same. 
 -The files I compared were each services, _ReceiveFSM, _SendFSM, and <service name>Service.cpp.
 -The services I looked at were Transport, Events, AccessControl, Management, Discovery, ListManager, LocalPoseServer, and LocalWaypointList.
